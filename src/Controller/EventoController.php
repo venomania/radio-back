@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 
 class EventoController extends AbstractController
 {
-    #[Route('/evento', name: 'app_evento', methods: "GET")]
+    #[Route('/eventos', name: 'app_evento', methods: "GET")]
     public function index(EventoRepository $eventoRepository): Response
     {
         $evento = $eventoRepository->findAll();
@@ -26,7 +26,7 @@ class EventoController extends AbstractController
     }
 
     //Post NewEvento
-    #[Route('/newevento', name: 'app_newevento', methods: "POST")]
+    #[Route('/api/newevento', name: 'app_newevento', methods: "POST")]
     public function newEvento(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ManagerRegistry $doctrine , ValidatorInterface $val)
     {
 

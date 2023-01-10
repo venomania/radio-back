@@ -17,15 +17,15 @@ use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 
 class NoticiaController extends AbstractController
 {
-    #[Route('/noticias', name: 'app_noticias', methods: "GET")]
-    public function index(NoticiaRepository $noticiasRepository): Response
+    #[Route('/noticias', name: 'app_noticia' , methods:"GET")]
+    public function index(NoticiaRepository $noticiaRapository):Response
     {
-
-        $noticias = $noticiasRepository->findAll();
-        return $this->json($noticias, 200, [], ['groups' => 'Noticias:read']);
+      $noticia = $noticiaRapository->findAll();
+      $reponse = $this->json($noticia,200,[],['groups' => 'Noticias:read']); 
+      return $reponse;
     }
 
-    #[Route('/newnoticias', name: 'app_noticias', methods: "POST")]
+    #[Route('/api/newnoticia', name: 'app_noticias', methods: "POST")]
     public function newNoticias(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ManagerRegistry $doctrine, ValidatorInterface $val)
     {
         $jsonRecu = $request->getContent();

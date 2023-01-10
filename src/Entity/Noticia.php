@@ -24,7 +24,7 @@ class Noticia
     private ?string $titulo = null;
 
     #[ORM\ManyToOne(inversedBy: 'noticias')]
-    private ?USer $autor = null;
+    private ?User $autor = null;
 
     public function getId(): ?int
     {
